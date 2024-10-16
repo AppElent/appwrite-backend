@@ -1,6 +1,6 @@
 export default async ({ req, res, log }) => {
     log(req.bodyText);                    // Raw request body, contains request data
-    log(JSON.stringify(req.bodyJson));    // Object from parsed JSON request body, otherwise string
+    //log(JSON.stringify(req.bodyJson));    // Object from parsed JSON request body, otherwise string
     log(JSON.stringify(req.headers));     // String key-value pairs of all request headers, keys are lowercase
     log(req.scheme);                      // Value of the x-forwarded-proto header, usually http or https
     log(req.method);                      // Request method, such as GET, POST, PUT, DELETE, PATCH, etc.
