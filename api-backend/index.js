@@ -1,6 +1,5 @@
 module.exports = async function (req, res) {
-  const name = req.payload.name || 'World';
   res.json({
-    message: `Hello, ${name} from function1!`
+    message: `Hello, from testfunction!`
   });
 };
