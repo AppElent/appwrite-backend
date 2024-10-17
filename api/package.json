@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@itznotabug/appexpress": "^1.6.2",
     "node-appwrite": "^8.0.0"
   }
 }
