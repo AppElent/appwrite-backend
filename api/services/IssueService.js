@@ -1,6 +1,6 @@
 class IssueService {
   constructor() {
-    this.issues = [];
+    this.issues = [{ id: 1, title: "Issue 1", description: "This is issue 1" }];
   }
 
   createIssue(issue) {
