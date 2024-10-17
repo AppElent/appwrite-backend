@@ -1,6 +1,6 @@
 import AppExpress from "@itznotabug/appexpress";
-import userRoutes from "./routes/user";
-import authMiddleware from "./middleware/auth";
+import userRoutes from "./routes/user.js";
+import authMiddleware from "./middleware/auth.js";
 
 const appExpress = new AppExpress();
 
