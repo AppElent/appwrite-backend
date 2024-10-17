@@ -12,7 +12,8 @@ class IssueService {
   }
 
   getIssue(id) {
-    return this.issues.find((issue) => issue.id === id);
+    const issue = this.issues.find((issue) => issue.id === parseInt(id));
+    return issue || {};
   }
 }
 
