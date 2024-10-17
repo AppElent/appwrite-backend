@@ -2,12 +2,12 @@ import AppExpress from "@itznotabug/appexpress";
 import userRoutes from "./routes/user.js";
 import authMiddleware from "./middleware/auth.js";
 
-const appExpress = new AppExpress();
+const app = new AppExpress();
 
 // Middleware
 app.middleware(authMiddleware);
 
-appExpress.use("/user", userRoutes);
+app.use("/user", userRoutes);
 
 const getHome = (req, res) => {
   res.json({ test: true });
