@@ -1,6 +1,9 @@
+import { Client, Databases, ID } from "appwrite";
+
 class IssueService {
-  constructor() {
+  constructor(endpoint, projectId) {
     this.issues = [{ id: 1, title: "Issue 1", description: "This is issue 1" }];
+    this.client = new Client().setEndpoint(endpoint).setProject(projectId);
   }
 
   createIssue(issue) {

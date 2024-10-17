@@ -3,6 +3,8 @@ import userRoutes from "./routes/user.js";
 import issueRoutes from "./routes/issues.js";
 import authMiddleware from "./middleware/auth.js";
 
+//URL: https://github.com/ItzNotABug/appexpress/wiki/Request-&-Response
+
 const app = new AppExpress();
 
 // Middleware
