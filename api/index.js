@@ -31,4 +31,4 @@ app.get("/", getHome);
 //     return res.text("All the request parameters are logged to the Appwrite Console.");
 // };
 
-export default async (context) => await appExpress.attach(context);
+export default async (context) => await app.attach(context);
