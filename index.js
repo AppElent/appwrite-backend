@@ -1,4 +1,5 @@
 import AppExpress from "@itznotabug/appexpress";
+import cors from "@itznotabug/appexpress-cors";
 import userRoutes from "./routes/user.js";
 import issueRoutes from "./routes/issues.js";
 import authMiddleware from "./middleware/auth.js";
@@ -7,6 +8,16 @@ import recipeRoutes from "./routes/recipes.js";
 //URL: https://github.com/ItzNotABug/appexpress/wiki/Request-&-Response
 
 const app = new AppExpress();
+
+express.middleware(
+  cors({
+    origin: "*", // specify an origin or * for all,
+    excludes: ["/styles.css"], // exclude cors on some urls, accepts String & Regex,
+    preFlightContinue: false, // if false, empty response is sent on `OPTIONS` method,
+    optionsSuccessStatus: 204, // status code to be sent on `OPTIONS`,
+    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"], // allowed methods for cors,
+  })
+);
 
 // Middleware
 app.middleware(authMiddleware);
