@@ -1,6 +1,6 @@
-const jsonld = require("jsonld");
-const cheerio = require("cheerio");
-const fetch = require("node-fetch");
+import * as jsonld from "jsonld";
+import * as cheerio from "cheerio";
+import fetch from "node-fetch";
 
 // Function to fetch and parse JSON-LD recipe data
 async function getRecipeData(url) {
