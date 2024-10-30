@@ -11,7 +11,7 @@ const getRecipeInfo = async (req, res, log) => {
     log(recipeData);
     log(req.host);
     let corsHeader = "https://appelent.site";
-    if (host === "localhost") {
+    if (req.host === "localhost") {
       corsHeader = "http://localhost";
     }
     res.json(recipeData, 200, {
