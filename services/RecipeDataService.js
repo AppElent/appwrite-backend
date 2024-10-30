@@ -21,6 +21,12 @@ async function getRecipeData(url) {
 
     // Parse JSON-LD data
     const jsonData = JSON.parse(jsonLdScript);
+    let recipe;
+    if (Array.isArray(jsonData)) {
+      recipe = jsonData[0];
+    } else {
+      recipe = jsonData["@graph"]?.find((gr) => gr["@type"] === "Recipe");
+    }
     // console.log(jsonData["@graph"]);
     // console.log("-----");
     // console.log(jsonData["@graph"].find((gr) => gr["@type"] === "Recipe"));
@@ -29,7 +35,8 @@ async function getRecipeData(url) {
     // const expanded = await jsonld.expand(jsonData);
 
     // Filter the expanded data to find the recipe information
-    const recipe = jsonData["@graph"].find((gr) => gr["@type"] === "Recipe");
+    console.log(jsonData);
+    console.log(recipe);
 
     if (!recipe) {
       throw new Error("Recipe data not found in JSON-LD");
@@ -47,5 +54,9 @@ async function getRecipeData(url) {
 // getRecipeData(
 //   "https://thespiceadventuress.com/2015/12/10/slow-cooked-lamb-curry/amp/"
 // );
+
+getRecipeData(
+  "https://www.allrecipes.com/recipe/10275/classic-peanut-butter-cookies/"
+);
 
 export default getRecipeData;
