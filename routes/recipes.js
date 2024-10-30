@@ -9,7 +9,14 @@ const getRecipeInfo = async (req, res, log) => {
     if (!url) throw new Error("No URL provided");
     const recipeData = await getRecipeData(url);
     log(recipeData);
-    res.json(recipeData);
+    log(req.host);
+    let corsHeader = "https://appelent.site";
+    if (host === "localhost") {
+      corsHeader = "http://localhost";
+    }
+    res.json(recipeData, 200, {
+      "Access-Control-Allow-Origin": corsHeader, // Required for CORS support to work
+    });
   } catch (e) {
     console.log(e);
     res.json({ error: e });
