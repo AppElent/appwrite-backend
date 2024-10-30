@@ -1,4 +1,4 @@
-import * as jsonld from "jsonld";
+// import * as jsonld from "jsonld";
 import * as cheerio from "cheerio";
 import fetch from "node-fetch";
 
@@ -21,39 +21,31 @@ async function getRecipeData(url) {
 
     // Parse JSON-LD data
     const jsonData = JSON.parse(jsonLdScript);
+    // console.log(jsonData["@graph"]);
+    // console.log("-----");
+    // console.log(jsonData["@graph"].find((gr) => gr["@type"] === "Recipe"));
 
-    // Use jsonld.expand to expand the JSON-LD data
-    const expanded = await jsonld.expand(jsonData);
+    // // Use jsonld.expand to expand the JSON-LD data
+    // const expanded = await jsonld.expand(jsonData);
 
     // Filter the expanded data to find the recipe information
-    const recipe = expanded.find(
-      (item) => item["@type"] && item["@type"].includes("Recipe")
-    );
+    const recipe = jsonData["@graph"].find((gr) => gr["@type"] === "Recipe");
 
     if (!recipe) {
       throw new Error("Recipe data not found in JSON-LD");
     }
 
-    // Extract relevant recipe fields
-    const recipeData = {
-      name: recipe["http://schema.org/name"]?.[0]?.["@value"] || "",
-      ingredients:
-        recipe["http://schema.org/recipeIngredient"]?.map((i) => i["@value"]) ||
-        [],
-      instructions:
-        recipe["http://schema.org/recipeInstructions"]?.map(
-          (inst) => inst["@value"]
-        ) || [],
-      cookingTime: recipe["http://schema.org/cookTime"]?.[0]?.["@value"] || "",
-      image: recipe["http://schema.org/image"]?.[0]?.["@id"] || "",
-      raw: recipe,
-    };
-
-    console.log(recipeData);
-    return recipeData;
+    console.log(recipe);
+    return recipe;
   } catch (error) {
     console.error("Error fetching recipe data:", error);
+    throw error;
   }
 }
+
+//getRecipeData("https://www.allrecipes.com/recipe/269592/lemon-herb-chicken-and-asparagus-foil-packs/");
+// getRecipeData(
+//   "https://thespiceadventuress.com/2015/12/10/slow-cooked-lamb-curry/amp/"
+// );
 
 export default getRecipeData;

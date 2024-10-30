@@ -3,12 +3,12 @@ const router = new AppExpress.Router();
 
 import getRecipeData from "../services/RecipeDataService.js";
 
-const getRecipeInfo = async (req, res) => {
+const getRecipeInfo = async (req, res, log) => {
   try {
     const url = req.query.url;
     if (!url) throw new Error("No URL provided");
     const recipeData = await getRecipeData(url);
-    console.log(recipeData);
+    log(recipeData);
     res.json(recipeData);
   } catch (e) {
     console.log(e);
