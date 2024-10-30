@@ -56,8 +56,8 @@ async function getRecipeData(url) {
 //   "https://thespiceadventuress.com/2015/12/10/slow-cooked-lamb-curry/amp/"
 // );
 
-getRecipeData(
-  "https://ashishbhatia3.wordpress.com/2015/01/21/dhabe-ka-gosht-highway-lamb-curry/amp/"
-);
+// getRecipeData(
+//   "http://adamliaw.com/recipe/ramen-school-006-rich-double-soup-for-ramen/"
+// );
 
 export default getRecipeData;
