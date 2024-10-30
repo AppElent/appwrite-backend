@@ -9,7 +9,7 @@ import recipeRoutes from "./routes/recipes.js";
 
 const app = new AppExpress();
 
-express.middleware(
+app.middleware(
   cors({
     origin: "*", // specify an origin or * for all,
     excludes: ["/styles.css"], // exclude cors on some urls, accepts String & Regex,
