@@ -8,6 +8,7 @@ const getRecipeInfo = async (req, res) => {
     const url = req.query.url;
     if (!url) throw new Error("No URL provided");
     const recipeData = await getRecipeData(url);
+    console.log(recipeData);
     res.json(recipeData);
   } catch (e) {
     console.log(e);
