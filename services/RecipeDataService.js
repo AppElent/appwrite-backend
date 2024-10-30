@@ -35,8 +35,9 @@ async function getRecipeData(url) {
     // const expanded = await jsonld.expand(jsonData);
 
     // Filter the expanded data to find the recipe information
-    console.log(jsonData);
-    console.log(recipe);
+
+    console.log("JSON data", jsonData);
+    console.log("Recipe", recipe);
 
     if (!recipe) {
       throw new Error("Recipe data not found in JSON-LD");
@@ -56,7 +57,7 @@ async function getRecipeData(url) {
 // );
 
 getRecipeData(
-  "https://www.allrecipes.com/recipe/10275/classic-peanut-butter-cookies/"
+  "https://ashishbhatia3.wordpress.com/2015/01/21/dhabe-ka-gosht-highway-lamb-curry/amp/"
 );
 
 export default getRecipeData;

@@ -12,7 +12,7 @@ const getRecipeInfo = async (req, res, log) => {
     res.json(recipeData);
   } catch (e) {
     console.log(e);
-    res.json({ error: e });
+    res.json({ error: e.message });
   }
 };
 
