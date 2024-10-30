@@ -2,6 +2,7 @@ import AppExpress from "@itznotabug/appexpress";
 import userRoutes from "./routes/user.js";
 import issueRoutes from "./routes/issues.js";
 import authMiddleware from "./middleware/auth.js";
+import recipeRoutes from "./routes/recipes.js";
 
 //URL: https://github.com/ItzNotABug/appexpress/wiki/Request-&-Response
 
@@ -12,6 +13,7 @@ app.middleware(authMiddleware);
 
 app.use("/users", userRoutes);
 app.use("/issues", issueRoutes);
+app.use("/recipes", recipeRoutes);
 
 const getHome = (req, res) => {
   res.json({ test: true });
