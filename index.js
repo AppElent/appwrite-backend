@@ -42,7 +42,15 @@ const getKlantverzoeken = (req, res) => {
   }])
 }
 
+const postNetcheckverzoek = (req, res) => {
+  return res.json({
+    status: 'ok',
+    ac: req.query.ac
+  })
+}
+
 app.get('/alliander/klantverzoeken', getKlantverzoeken); 
+app.get('/alliander/netcheckverzoek', postNetcheckverzoek)
   
 app.get("/", getHome);
 
