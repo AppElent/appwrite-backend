@@ -31,7 +31,7 @@ const getHome = (req, res) => {
 };
 
 const getKlantverzoeken = (req, res) => {
-  return [{
+  return res.json([{
     id: 1,
     ac: 4,
     klant: 'klant1'
@@ -39,7 +39,7 @@ const getKlantverzoeken = (req, res) => {
     id: 2,
     ac: 1,
     klant: 'klant2'
-  }]
+  }])
 }
 
 app.get('/alliander/klantverzoeken', getKlantverzoeken); 
