@@ -42,7 +42,7 @@ const getKlantverzoeken = (req, res) => {
   }]
 }
 
-app.get('/alliander/klantverzoeken', getKlantverzoeken);
+app.get('/alliander/klantverzoeken', getKlantverzoeken); 
   
 app.get("/", getHome);
 
