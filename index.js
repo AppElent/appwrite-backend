@@ -30,6 +30,20 @@ const getHome = (req, res) => {
   res.json({ test: true });
 };
 
+const getKlantverzoeken = (req, res) => {
+  return [{
+    id: 1,
+    ac: 4,
+    klant: 'klant1'
+  },{
+    id: 2,
+    ac: 1,
+    klant: 'klant2'
+  }]
+}
+
+app.get('/alliander/klantverzoeken', getKlantverzoeken);
+  
 app.get("/", getHome);
 
 // export default async ({ req, res, log }) => {
