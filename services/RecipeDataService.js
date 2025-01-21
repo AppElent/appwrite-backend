@@ -1,4 +1,5 @@
 // import * as jsonld from "jsonld";
+import getRecipeDataNew from "@dimfu/recipe-scraper";
 import * as cheerio from "cheerio";
 import fetch from "node-fetch";
 
@@ -6,14 +7,32 @@ import fetch from "node-fetch";
 async function getRecipeData(url) {
   try {
     // Fetch the page content
-    const response = await fetch(url);
+    const options = {
+      method: "GET",
+      headers: {
+        "User-Agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "Accept-Encoding": "gzip, deflate, br",
+        Accept:
+          "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+      },
+    };
+    const response = await fetch(url, options);
     const html = await response.text();
+
+    console.log(html);
 
     // Load the HTML into cheerio
     const $ = cheerio.load(html);
 
+    const data = await getRecipeDataNew(
+      "https://www.ah.nl/allerhande/recepten/hoofdgerechten"
+    );
+    console.log(data);
+
     // Extract JSON-LD script content
-    const jsonLdScript = $('script[type="application/ld+json"]').html();
+    const jsonLdScriptRaw = $('script[type="application/ld+json"]');
+    const jsonLdScript = jsonLdScriptRaw.html();
 
     if (!jsonLdScript) {
       throw new Error("No JSON-LD data found on the page");
@@ -56,8 +75,6 @@ async function getRecipeData(url) {
 //   "https://thespiceadventuress.com/2015/12/10/slow-cooked-lamb-curry/amp/"
 // );
 
-// getRecipeData(
-//   "http://adamliaw.com/recipe/ramen-school-006-rich-double-soup-for-ramen/"
-// );
+getRecipeData("https://www.ah.nl/allerhande/recepten/hoofdgerechten");
 
 export default getRecipeData;
