@@ -31,7 +31,6 @@ const getWineData = async (req, res, log) => {
   }
 };
 
-router.get("/", getRecipeInfo);
 router.get("/vivino/search", searchVivino);
 router.get("/vivino", getWineData);
 
