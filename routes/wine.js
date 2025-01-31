@@ -7,12 +7,13 @@ const searchVivino = async (req, res, log) => {
   try {
     const query = req.query.query;
     if (!query) throw new Error("No query provided");
+    log("1", url);
     const vivinoService = new VivinoService();
     const recipeData = await vivinoService.searchWine(query);
     // log(recipeData);
     res.json(recipeData);
   } catch (e) {
-    console.log(e);
+    log(e);
     res.json({ error: e.message });
   }
 };
@@ -21,12 +22,13 @@ const getWineData = async (req, res, log) => {
   try {
     const url = req.query.url;
     if (!url) throw new Error("No URL provided");
+    log("1", url);
     const vivinoService = new VivinoService();
     const recipeData = await vivinoService.getWineData(url);
     // log(recipeData);
     res.json(recipeData);
   } catch (e) {
-    console.log(e);
+    log(e);
     res.json({ error: e.message });
   }
 };
