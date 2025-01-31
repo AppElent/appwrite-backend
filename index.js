@@ -1,9 +1,10 @@
 import AppExpress from "@itznotabug/appexpress";
 import cors from "@itznotabug/appexpress-cors";
-import userRoutes from "./routes/user.js";
-import issueRoutes from "./routes/issues.js";
 import authMiddleware from "./middleware/auth.js";
+import issueRoutes from "./routes/issues.js";
 import recipeRoutes from "./routes/recipes.js";
+import userRoutes from "./routes/user.js";
+import wineRoutes from "./routes/wine.js";
 
 //URL: https://github.com/ItzNotABug/appexpress/wiki/Request-&-Response
 
@@ -25,33 +26,12 @@ app.middleware(authMiddleware);
 app.use("/users", userRoutes);
 app.use("/issues", issueRoutes);
 app.use("/recipes", recipeRoutes);
+app.use("/wine", wineRoutes);
 
 const getHome = (req, res) => {
   res.json({ test: true });
 };
 
-const getKlantverzoeken = (req, res) => {
-  return res.json([{
-    id: 1,
-    ac: 4,
-    klant: 'klant1'
-  },{
-    id: 2,
-    ac: 1,
-    klant: 'klant2'
-  }])
-}
-
-const postNetcheckverzoek = (req, res) => {
-  return res.json({
-    status: 'ok',
-    ac: req.query.ac
-  })
-}
-
-app.get('/alliander/klantverzoeken', getKlantverzoeken); 
-app.get('/alliander/netcheckverzoek', postNetcheckverzoek)
-  
 app.get("/", getHome);
 
 // export default async ({ req, res, log }) => {
