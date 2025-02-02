@@ -7,7 +7,7 @@ const searchVivino = async (req, res, log) => {
   try {
     const query = req.query.query;
     if (!query) throw new Error("No query provided");
-    log("1", url);
+    log("1", query);
     const vivinoService = new VivinoService();
     const recipeData = await vivinoService.searchWine(query);
     // log(recipeData);
